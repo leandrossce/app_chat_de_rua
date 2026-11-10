@@ -1,0 +1,47 @@
+# Gradle e arquivos gerados pelo Android
+.gradle/
+build/
+.cxx/
+.externalNativeBuild/
+/app/release/
+*.apk
+*.aab
+*.apks
+*.hprof
+*.log
+
+# Configuracoes locais do SDK e dos editores
+local.properties
+.idea/
+.vscode/
+*.iml
+/.codex/
+/.agents/
+
+# Assinatura do aplicativo e credenciais (manter backup fora do Git)
+keystore.properties
+keystore_password.txt
+keystores/
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Materiais locais de publicacao e video; nao sao necessarios ao codigo
+/publicacao-play-store/
+/chat-de-rua-como-usar-1080p.mp4
+
+# Temporarios do Python e do sistema operacional
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+Desktop.ini

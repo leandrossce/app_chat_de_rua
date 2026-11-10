@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.application'
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+if (!keystorePropertiesFile.exists()) {
+    throw new GradleException("Arquivo keystore.properties não encontrado. Execute novamente o script de criação do projeto.")
+}
+
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    namespace "com.capongasoftware.chat_de_rua"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.capongasoftware.chat_de_rua"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "com.capongasoftware.chat_de_rua.StickerInstrumentation"
+    }
+
+    // Every language must be available offline when the user changes the app language.
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile rootProject.file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}

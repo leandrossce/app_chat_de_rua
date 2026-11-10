@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/app_background">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/screen_padding">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/image_progress_title"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/imageProgressStage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:accessibilityLiveRegion="polite"
+                android:gravity="center"
+                android:text="@string/image_progress_starting"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/imageProgressPercent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:accessibilityLiveRegion="polite"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/image_progress_initial_percent"
+                android:textColor="@color/primary_dark"
+                android:textSize="32sp" />
+
+            <ProgressBar
+                android:id="@+id/imageProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:progressDrawable="@drawable/progress_track"
+                android:layout_marginTop="14dp"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="@color/disabled_background"
+                android:progressTint="@color/primary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:text="@string/image_progress_note"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/cancelImageProgressButton"
+                style="@style/SecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/cancel" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="app_background">#F4F7F7</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="primary">#08665C</color>
+    <color name="primary_dark">#094F4A</color>
+    <color name="primary_pressed">#094D48</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="text_primary">#132E32</color>
+    <color name="text_secondary">#415D62</color>
+    <color name="text_hint">#526D70</color>
+    <color name="border">#CEDCDC</color>
+    <color name="disabled_background">#E1E8E8</color>
+    <color name="disabled_text">#516466</color>
+    <color name="status_background">#E0F3EE</color>
+    <color name="status_text">#124F4C</color>
+    <color name="message_area">#EBF2F1</color>
+    <color name="message_mine">#C8EFE5</color>
+    <color name="message_mine_text">#103F3A</color>
+    <color name="message_contact">#FFFFFF</color>
+    <color name="message_selected">#DEF0EC</color>
+    <color name="message_contact_text">#183337</color>
+    <color name="message_locked">#FFF1D7</color>
+    <color name="message_locked_border">#DEBF83</color>
+    <color name="message_locked_text">#684510</color>
+    <color name="masthead">#103D40</color>
+    <color name="on_masthead_secondary">#C2E4DE</color>
+    <color name="secondary_fill">#DEF0EC</color>
+    <color name="ripple_light">#3DFFFFFF</color>
+    <color name="ripple_dark">#2608665C</color>
+</resources>

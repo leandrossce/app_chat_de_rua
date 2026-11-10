@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/bluetoothWarningView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:accessibilityLiveRegion="polite"
+        android:background="@color/message_locked"
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingTop="12dp"
+        android:paddingEnd="@dimen/screen_padding"
+        android:paddingBottom="12dp"
+        android:text="@string/bluetooth_required_warning"
+        android:textColor="@color/message_locked_text"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+    <LinearLayout
+        android:id="@+id/homeScreen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:background="@color/masthead"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_conversation_mark" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/on_primary"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_subtitle"
+                    android:textColor="@color/on_masthead_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+        <ScrollView
+            android:id="@+id/mainScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:clipToPadding="false">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/screen_padding"
+                android:paddingEnd="@dimen/screen_padding"
+                android:paddingBottom="20dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/statusView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:accessibilityLiveRegion="polite"
+                    android:background="@drawable/bg_status"
+                    android:paddingStart="12dp"
+                    android:paddingTop="9dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="9dp"
+                    android:text="@string/status_initial"
+                    android:textColor="@color/status_text"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/languageButton"
+                    style="@style/QuietButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_language" />
+
+                <Button
+                    android:id="@+id/openChatButton"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_chat"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/button_primary_content"
+                    android:text="@string/return_to_chat"
+                    android:visibility="gone" />
+                <Button
+                    android:id="@+id/createConversationButton"
+                    style="@style/PrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_chat"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/button_primary_content"
+                    android:text="@string/create_conversation" />
+                <Button
+                    android:id="@+id/connectButton"
+                    style="@style/SecondaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/button_secondary_content"
+                    android:text="@string/find_conversation" />
+                <Button
+                    android:id="@+id/disconnectButton"
+                    style="@style/QuietButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableStart="@drawable/ic_close"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/button_secondary_content"
+                    android:enabled="false"
+                    android:text="@string/disconnect"
+                    android:visibility="gone" />
+                <Button
+                    android:id="@+id/cancelAutomaticConversationButton"
+                    style="@style/QuietButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableStart="@drawable/ic_close"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/button_secondary_content"
+                    android:text="@string/cancel_automatic_conversation"
+                    android:visibility="gone" />
+                <Button
+                    android:id="@+id/resumeAutomaticConversationButton"
+                    style="@style/SecondaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/resume_automatic_conversation"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_card"
+                    android:elevation="1dp"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/password_label"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/password_note"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <Switch
+                        android:id="@+id/useDefaultPasswordSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:checked="true"
+                        android:minHeight="48dp"
+                        android:paddingStart="2dp"
+                        android:paddingEnd="2dp"
+                        android:text="@string/use_default_password"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/defaultPasswordNoteView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="@string/default_password_note"
+                        android:textColor="@color/message_locked_text"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/personalPasswordRow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/passphraseInput"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:background="@drawable/bg_input"
+                            android:hint="@string/password_hint"
+                            android:importantForAutofill="no"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:minHeight="50dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:saveEnabled="false"
+                            android:singleLine="true"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
+                            android:textSize="16sp" />
+
+                        <Button
+                            android:id="@+id/showPasswordButton"
+                            style="@style/SecondaryButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/show_password" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@string/password_auto_note"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_card"
+                    android:elevation="1dp"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/nickname_label"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="@string/nickname_note"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/nicknameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/bg_input"
+                        android:hint="@string/nickname_hint"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName|textCapSentences"
+                        android:maxLines="1"
+                        android:minHeight="50dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:singleLine="true"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/chatScreen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/masthead"
+            android:paddingStart="4dp"
+            android:paddingEnd="@dimen/screen_padding"
+            android:minHeight="58dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backToHomeButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back_to_home"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/on_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/chat_title"
+                android:textColor="@color/on_primary"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/clearChatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/clear_chat"
+                android:fontFamily="sans-serif-medium"
+                android:minWidth="48dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/clear_chat_short"
+                android:textAllCaps="false"
+                android:textColor="@color/on_masthead_secondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/messageSelectionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/secondary_fill"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/cancelMessageSelectionButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cancel_message_selection"
+                android:padding="12dp"
+                android:src="@drawable/ic_close"
+                android:tint="@color/primary" />
+
+            <TextView
+                android:id="@+id/selectedMessageCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:accessibilityLiveRegion="polite"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/deleteSelectedMessagesButton"
+                style="@style/QuietButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_selected_messages" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/chatConnectionStatusView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/screen_padding"
+            android:layout_marginEnd="@dimen/screen_padding"
+            android:accessibilityLiveRegion="assertive"
+            android:background="@drawable/bg_notice"
+            android:paddingStart="12dp"
+            android:paddingTop="9dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="9dp"
+            android:text="@string/status_connection_rejected"
+            android:textColor="@color/message_locked_text"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/message_area">
+
+            <ScrollView
+                android:id="@+id/messageScroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                android:nestedScrollingEnabled="true"
+                android:overScrollMode="ifContentScrolls"
+                android:paddingStart="@dimen/screen_padding"
+                android:paddingEnd="@dimen/screen_padding"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp">
+
+                <LinearLayout
+                    android:id="@+id/messageList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/emptyStateView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_card"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:id="@+id/emptyStateLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/empty_conversation"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="15sp" />
+
+                        <ProgressBar
+                            android:id="@+id/incomingMediaProgressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"
+                            android:progressDrawable="@drawable/progress_track"
+                            android:layout_marginTop="12dp"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressTint="@color/primary"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/incomingMediaProgressPercent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/image_progress_initial_percent"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/messageComposer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/surface"
+            android:baselineAligned="false"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingTop="8dp"
+            android:paddingBottom="6dp">
+
+            <EditText
+                android:id="@+id/messageInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:gravity="center_vertical|start"
+                android:hint="@string/message_hint"
+                android:importantForAutofill="no"
+                android:imeOptions="actionSend"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:minHeight="50dp"
+                android:padding="12dp"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/select_image"
+                    android:enabled="false"
+                    android:padding="13dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_image"
+                    android:tint="@color/primary" />
+
+                <ImageButton
+                    android:id="@+id/audioButton"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/record_audio"
+                    android:enabled="false"
+                    android:padding="13dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_mic"
+                    android:tint="@color/primary" />
+
+                <ImageButton
+                    android:id="@+id/mp3Button"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="50dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/select_mp3"
+                    android:enabled="false"
+                    android:padding="13dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_music"
+                    android:tint="@color/primary" />
+
+                <ImageButton
+                    android:id="@+id/stickerButton"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/stickers"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_sticker"
+                    android:tint="@color/primary" />
+                <Button
+                    android:id="@+id/sendButton"
+                    style="@style/PrimaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawableStart="@drawable/ic_send"
+                    android:drawablePadding="7dp"
+                    android:drawableTint="@color/button_primary_content"
+                    android:enabled="false"
+                    android:text="@string/send" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
