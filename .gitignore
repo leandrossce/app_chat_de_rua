@@ -12,6 +12,7 @@ build/
 
 # Configuracoes locais do SDK e dos editores
 local.properties
+local.properties.*
 .idea/
 .vscode/
 *.iml
@@ -21,13 +22,28 @@ local.properties
 # Assinatura do aplicativo e credenciais (manter backup fora do Git)
 keystore.properties
 keystore_password.txt
+keystore*.properties
+keystore*.txt
+!keystore.properties.example
 keystores/
 *.jks
+*.jks.*
 *.keystore
+*.keystore.*
 *.p12
+*.p12.*
 *.pfx
+*.pfx.*
 *.pem
+*.pem.*
 *.key
+*.key.*
+/credentials/
+/secrets/
+/.aws/
+/.ssh/
+*service-account*.json
+*service_account*.json
 .env
 .env.*
 !.env.example
@@ -45,3 +61,9 @@ venv/
 .DS_Store
 Thumbs.db
 Desktop.ini
+*.bak
+*.orig
+*.rej
+*.tmp
+*.swp
+*~
